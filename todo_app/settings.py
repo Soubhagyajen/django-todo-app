@@ -87,14 +87,25 @@ WSGI_APPLICATION = 'todo_app.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'todo_db',  # Change this to your database name
+#         'USER': 'system',  # Default MySQL username
+#         'PASSWORD': 'Hari@2004',  # Your MySQL root password
+#         'HOST': 'localhost',  
+#         'PORT': '3306',  # Default MySQL port
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'todo_db',  # Change this to your database name
-        'USER': 'system',  # Default MySQL username
-        'PASSWORD': 'Hari@2004',  # Your MySQL root password
-        'HOST': 'localhost',  
-        'PORT': '3306',  # Default MySQL port
+        'NAME': 'railway',
+        'USER': 'root',
+        'PASSWORD': 'HlovPbjXCLaaGSxgiupqbQKDCwiNvkMN',
+        'HOST': 'metro.proxy.rlwy.net',
+        'PORT': '49939',
     }
 }
 
