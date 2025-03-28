@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Todo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'todo/styles.css' %}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #ffffff, #f1f1f1);
+        }
+        .btn-action {
+            width: 100%;
+        }
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2 class="text-center">Update Todo</h2>
+        <button id="theme-toggle" class="btn btn-secondary theme-toggle">Toggle Dark Mode</button>
+        <form method="POST" class="mt-4">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" class="form-control" value="{{ todo.title }}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" class="form-control">{{ todo.description }}</textarea>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" id="completed" name="completed" class="form-check-input" {% if todo.completed %}checked{% endif %}>
+                <label class="form-check-label" for="completed">Completed</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-action">Update</button>
+        </form>
+        <a href="{% url 'todo_list' %}" class="btn btn-secondary btn-action mt-2">Back to Todo List</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#theme-toggle').click(function() {
+                $('body').toggleClass('dark-mode');
+            });
+        });
+    </script>
+</body>
+</html>
